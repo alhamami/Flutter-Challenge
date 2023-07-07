@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../view_models/home_view_model.dart';
 import 'package:news_app/views/widgets/category_widget.dart';
-import '../widgets/news_card_widget.dart';
+import '../widgets/horizontal_news_cards_widget.dart';
+import '../widgets/vertical_news_cards_widget.dart';
+import '../widgets/subtitle_widget.dart';
 import 'package:news_app/views/constants.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,7 +16,8 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: kScaffoldBackgroundColor,
       body: SafeArea(
-        child: Column(
+        child: ListView(
+          scrollDirection: Axis.vertical,
           children: [
             Padding(
               padding: EdgeInsets.only(left: 30, right: 30, top: 20),
@@ -33,28 +36,23 @@ class HomeView extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-            CategoryCard(
-              categoryName: homeViewModel.homeModel.categories,
+            CategoryCards(
+              categories: homeViewModel.homeModel.categories,
               onPressed: () {},
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 30, top: 30),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  homeViewModel.homeModel.TreadingHeadLine,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ),
+            SubTitle(titleName: homeViewModel.homeModel.treadingHeadLine),
             SizedBox(
               height: 25,
             ),
-            NewsCard(
+            HorizontalNewsCards(
               trendingNews: homeViewModel.homeModel.trendingNews,
+            ),
+            SubTitle(titleName: homeViewModel.homeModel.latestHeadLine),
+            SizedBox(
+              height: 25,
+            ),
+            VerticalNewsCards(
+              listOflatestNewsCards: homeViewModel.getListOfLatestNewsCards(),
             ),
           ],
         ),

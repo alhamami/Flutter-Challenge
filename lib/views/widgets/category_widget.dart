@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'category_card_widget.dart';
 
-class CategoryCard extends StatelessWidget {
-  CategoryCard({required this.categoryName, required this.onPressed});
+class CategoryCards extends StatelessWidget {
+  CategoryCards({required this.categories, required this.onPressed});
 
-  final List<String> categoryName;
+  final List<String> categories;
   final VoidCallback onPressed;
 
   @override
@@ -15,27 +16,10 @@ class CategoryCard extends StatelessWidget {
         padding: EdgeInsets.only(left: 15),
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        itemCount: categoryName.length,
+        itemCount: categories.length,
         itemBuilder: (BuildContext context, int i) {
-          return Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: TextButton(
-              onPressed: onPressed,
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.black),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ),
-                ),
-              ),
-              child: Text(
-                '${categoryName[i]}',
-                style: TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.normal),
-              ),
-            ),
-          );
+          return CategoryCard(
+              category: '${categories[i]}', onPressed: onPressed);
         },
       ),
     );
