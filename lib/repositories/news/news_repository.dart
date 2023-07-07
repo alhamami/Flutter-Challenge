@@ -1,3 +1,5 @@
+import '../../models/home_model.dart';
+
 abstract class NewsRepository {
-  List<Map<String, String>> getLatestNews();
+  Future<List<HomeModel>> getLatestNews();
 }

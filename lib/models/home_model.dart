@@ -1,6 +1,25 @@
 import 'package:intl/intl.dart';
 
 class HomeModel {
+  HomeModel({this.newsImageUrl, this.newsTitle, this.publishedTime});
+  String? newsImageUrl;
+  String? newsTitle;
+  String? publishedTime;
+
+  HomeModel.fromJson(Map<String, dynamic> json) {
+    newsImageUrl = json['urlToImage'];
+    newsTitle = json['title'];
+    publishedTime = json['publishedAt'];
+  }
+
+  Map<String, dynamic> toJSON() {
+    return {
+      "newsImageUrl": newsImageUrl,
+      "newsTitle": newsTitle,
+      "publishedTime": publishedTime
+    };
+  }
+
   final String todayDate =
       'Today, ' + DateFormat('MMMM dd').format(DateTime.now()) + 'rd';
 
@@ -39,28 +58,28 @@ class HomeModel {
     }
   ];
 
-  final List<Map<String, String>> latestNews = [
-    {
-      "newsImageUrl":
-          "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA18CE5g.img?w=1920&h=1080&q=60&m=2&f=jpg",
-      "newsTitle":
-          "Al-Nassr announce arrival of Portuguese manager for Ronaldo",
-      "newsCategory": "Football",
-      "time": "14h ago"
-    },
-    {
-      "newsImageUrl":
-          "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dtSFG.img?w=800&h=415&q=60&m=2&f=jpg",
-      "newsTitle": "The most iconic cars in cinematic and television history",
-      "newsCategory": "Cars",
-      "time": "12h ago"
-    },
-    {
-      "newsImageUrl":
-          "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dtSFG.img?w=800&h=415&q=60&m=2&f=jpg",
-      "newsTitle": "10 Animals People Wish Were Pet Material But Sadly Aren't",
-      "newsCategory": "Animals",
-      "time": "10h ago"
-    }
-  ];
+  // final List<Map<String, String>> latestNews = [
+  //   {
+  //     "newsImageUrl":
+  //         "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA18CE5g.img?w=1920&h=1080&q=60&m=2&f=jpg",
+  //     "newsTitle":
+  //         "Al-Nassr announce arrival of Portuguese manager for Ronaldo",
+  //     "newsCategory": "Football",
+  //     "time": "14h ago"
+  //   },
+  //   {
+  //     "newsImageUrl":
+  //         "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dtSFG.img?w=800&h=415&q=60&m=2&f=jpg",
+  //     "newsTitle": "The most iconic cars in cinematic and television history",
+  //     "newsCategory": "Cars",
+  //     "time": "12h ago"
+  //   },
+  //   {
+  //     "newsImageUrl":
+  //         "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dtSFG.img?w=800&h=415&q=60&m=2&f=jpg",
+  //     "newsTitle": "10 Animals People Wish Were Pet Material But Sadly Aren't",
+  //     "newsCategory": "Animals",
+  //     "time": "10h ago"
+  //   }
+  // ];
 }

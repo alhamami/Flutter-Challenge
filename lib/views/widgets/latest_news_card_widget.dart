@@ -4,65 +4,68 @@ class LatestNewsCrad extends StatelessWidget {
   LatestNewsCrad(
       {required this.newsCategory,
       required this.newsTitle,
-      required this.time});
+      required this.time,
+      required this.newsImageUrl});
 
   final String newsCategory;
 
   final String newsTitle;
 
   final String time;
+  final String newsImageUrl;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 25, right: 25, bottom: 30),
-      child: SizedBox(
-        height: 120,
-        child: TextButton(
-          onPressed: () {},
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.white),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-              ),
+    return Container(
+      margin: EdgeInsets.fromLTRB(25, 0, 25, 30),
+      constraints: BoxConstraints(
+        minHeight: 112,
+      ),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(20))),
+      child: TextButton(
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+          backgroundColor: MaterialStateProperty.all(Colors.white),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
             ),
           ),
-          child: Padding(
-            padding: EdgeInsets.all(5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
+        ),
+        onPressed: () {},
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+                flex: 2,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "newsCategory",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "newsTitle",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
+                    Text(
+                      "newsCategory",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal,
                       ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      newsTitle,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Row(
                       children: [
                         Icon(
                           Icons.access_time,
-                          size: 20,
+                          size: 18,
                           color: Colors.grey,
                         ),
                         SizedBox(
@@ -78,17 +81,18 @@ class LatestNewsCrad extends StatelessWidget {
                       ],
                     )
                   ],
-                ),
-                ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  child: Image(
-                    image: NetworkImage(
-                        "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dtSFG.img?w=800&h=415&q=60&m=2&f=jpg"),
+                )),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: Image(
+                  image: NetworkImage(
+                    newsImageUrl,
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
