@@ -10,17 +10,19 @@ class HorizontalNewsCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 250,
+      height: 270,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: trendingNews.length,
-        itemBuilder: (BuildContext context, int i) {
-          return TrendingNewsCrad(
-            newsImageUrl: {trendingNews[i]["newsImageUrl"]}.first.toString(),
-            newsTitle: {trendingNews[i]["newsTitle"]}.first.toString(),
-            newsCategory: {trendingNews[i]["newsaCategory"]}.first.toString(),
-          );
+        itemBuilder: (context, index) {
+          if (index < 5) {
+            return TrendingNewsCrad(
+              newsImageUrl: trendingNews[index]['newsImageUrl']!,
+              newsTitle: trendingNews[index]['newsTitle']!,
+              publishedTime: trendingNews[index]['publishedTime']!,
+            );
+          }
         },
       ),
     );

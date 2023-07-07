@@ -9,27 +9,51 @@ class NewsAPI extends NewsRepository {
 
   @override
   Future<List<HomeModel>> getLatestNews() async {
-    print("hereeeeeeeeeeeeeeeeeeee");
     List<HomeModel> latestNews = [];
 
     try {
       Response response;
-
       response = await dio.get(
         'https://newsapi.org/v2/top-headlines?country=sa&apiKey=$api_key',
       );
 
-      var responseData = response.data as Map<String, dynamic>;
+      if (response.statusCode == 200) {
+        var responseData = response.data as Map<String, dynamic>;
 
-      List<dynamic> articles = responseData['articles'];
-
-      latestNews = articles.map((article) {
-        return HomeModel.fromJson(article);
-      }).toList();
+        List<dynamic> articles = responseData['articles'];
+        latestNews = articles.map((article) {
+          return HomeModel.fromJson(article);
+        }).toList();
+      }
     } catch (e) {
       print(e);
     }
 
     return latestNews;
   }
+  //
+  // @override
+  // Future<List<HomeModel>> getTrendingNews() async {
+  //   List<HomeModel> latestNews = [];
+  //
+  //   try {
+  //     Response response;
+  //     response = await dio.get(
+  //       'https://newsapi.org/v2/top-headlines?country=sa&apiKey=$api_key',
+  //     );
+  //
+  //     if (response.statusCode == 200) {
+  //       var responseData = response.data as Map<String, dynamic>;
+  //
+  //       List<dynamic> articles = responseData['articles'];
+  //       latestNews = articles.map((article) {
+  //         return HomeModel.fromJson(article);
+  //       }).toList();
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  //
+  //   return latestNews;
+  // }
 }

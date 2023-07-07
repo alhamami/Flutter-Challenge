@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class LatestNewsCrad extends StatelessWidget {
   LatestNewsCrad(
       {required this.newsCategory,
       required this.newsTitle,
-      required this.time,
+      required this.publishedTime,
       required this.newsImageUrl});
 
   final String newsCategory;
 
   final String newsTitle;
 
-  final String time;
+  final String publishedTime;
   final String newsImageUrl;
 
   @override
@@ -45,7 +46,7 @@ class LatestNewsCrad extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "newsCategory",
+                      newsCategory,
                       style: TextStyle(
                         color: Colors.grey,
                         fontWeight: FontWeight.normal,
@@ -72,7 +73,7 @@ class LatestNewsCrad extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          "14h ago",
+                          publishedTime,
                           style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.normal,

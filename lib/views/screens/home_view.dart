@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:stylish_bottom_bar/model/bar_items.dart';
+import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 import '../../view_models/home_view_model.dart';
 import 'package:news_app/views/widgets/category_widget.dart';
+import '../widgets/bottom_bar_widget.dart';
 import '../widgets/horizontal_news_cards_widget.dart';
 import '../widgets/latest_news_card_widget.dart';
+import '../widgets/trending_news_card_widget.dart';
 import '../widgets/vertical_news_cards_widget.dart';
 import '../widgets/subtitle_widget.dart';
 import 'package:news_app/views/constants.dart';
@@ -18,7 +22,7 @@ class _HomeViewState extends State<HomeView> {
   HomeViewModel homeViewModel = HomeViewModel();
 
   Future loadData() async {
-    await homeViewModel.getListOfLatestNewsCards();
+    await homeViewModel.fetchNews();
   }
 
   @override
@@ -61,18 +65,19 @@ class _HomeViewState extends State<HomeView> {
               height: 25,
             ),
             HorizontalNewsCards(
-              trendingNews: homeViewModel.homeModel.trendingNews,
+              trendingNews: homeViewModel.newsList,
             ),
             SubTitle(titleName: homeViewModel.homeModel.latestHeadLine),
             SizedBox(
               height: 25,
             ),
             VerticalNewsCards(
-              listOflatestNewsCards: homeViewModel.latestNewsCards,
+              latestNews: homeViewModel.newsList,
             ),
           ],
         ),
       ),
+      bottomNavigationBar: BottomBarStyle(),
     );
   }
 }

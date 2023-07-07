@@ -8,7 +8,7 @@ class SubTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 30, top: 30),
+      padding: EdgeInsets.only(left: 30, top: 25),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
