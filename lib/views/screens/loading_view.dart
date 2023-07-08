@@ -4,7 +4,9 @@ import '../../view_models/home_view_model.dart';
 import 'home_view.dart';
 
 class Loading extends StatefulWidget {
-  const Loading({super.key});
+  Loading({this.category});
+
+  String? category;
 
   @override
   State<Loading> createState() => _LoadingState();
@@ -13,7 +15,14 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
   void loadData() async {
     HomeViewModel homeViewModel = HomeViewModel();
-    await homeViewModel.fetchNews();
+
+    if (widget.category != null) {
+      await homeViewModel.fetchNewsByCategory(widget.category);
+      print(homeViewModel.newsList);
+    } else {
+      await homeViewModel.fetchNews();
+    }
+
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return HomeView(
         newsList: homeViewModel.newsList,
@@ -36,10 +45,10 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Center(
         child: SpinKitSquareCircle(
-          color: Colors.white,
+          color: Colors.black,
           size: 50.0,
         ),
       ),

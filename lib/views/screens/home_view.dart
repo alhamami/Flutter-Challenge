@@ -49,7 +49,6 @@ class HomeView extends StatelessWidget {
             ),
             CategoryCards(
               categories: categories,
-              onPressed: () {},
             ),
             SubTitle(titleName: treadingHeadLine),
             SizedBox(

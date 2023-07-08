@@ -36,13 +36,14 @@ class HomeModel {
   final String latestHeadLine = "Latest";
 
   List<String> categories = [
-    "Item 1",
-    "Item 1",
-    "Item 1",
-    "Item 1",
-    "Item 1",
-    "Item 1",
-    "Item 1"
+    'All',
+    'business',
+    'entertainment',
+    'general',
+    'health',
+    'science',
+    'sports',
+    'technology'
   ];
 
   final List<Map<String, String>> trendingNews = [
