@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/views/screens/home_view.dart';
+import 'package:news_app/views/screens/loading_view.dart';
 
 void main() {
   runApp(NewsApp());
@@ -11,7 +11,7 @@ class NewsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeView(),
+      home: Loading(),
     );
   }
 }

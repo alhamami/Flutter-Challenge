@@ -21,10 +21,11 @@ class HomeViewModel {
             item.newsTitle != null &&
             item.publishedTime != null) {
           newsList.add({
-            "newsCategory": "not found",
+            "newsCategory": item.newsCategory!,
             "newsTitle": item.newsTitle!,
             "publishedTime": item.publishedTime!.substring(0, 10),
             "newsImageUrl": item.newsImageUrl!,
+            "newsDescription": item.newsDescription!,
           });
         }
       }
@@ -42,7 +43,8 @@ class HomeViewModel {
         LatestNewsCrad(
           newsImageUrl: newsList[i]['newsImageUrl']!,
           newsTitle: newsList[i]['newsTitle']!,
-          publishedTime: newsList[i]['time']!,
+          publishedTime: newsList[i]['publishedTime']!,
+          newsDescription: newsList[i]['newsDescription']!,
           newsCategory: "not found",
         ),
       );
@@ -56,6 +58,8 @@ class HomeViewModel {
 
     for (int i = 0; i < 5; i++) {
       trendingNewsCards.add(TrendingNewsCrad(
+        newsCategory: newsList[i]['newsCategory']!,
+        newsDescription: newsList[i]['newsDescription']!,
         newsImageUrl: newsList[i]['newsImageUrl']!,
         newsTitle: newsList[i]['newsTitle']!,
         publishedTime: "Not Found",

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../screens/artical_details_view.dart';
+
 class TrendingNewsCrad extends StatelessWidget {
   TrendingNewsCrad(
       {required this.newsImageUrl,
       required this.newsTitle,
-      required this.publishedTime});
+      required this.publishedTime,
+      required this.newsCategory,
+      required this.newsDescription});
 
   final String newsImageUrl;
   final String newsTitle;
   final String publishedTime;
+  final String newsCategory;
+  final String newsDescription;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,19 @@ class TrendingNewsCrad extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ArticalDetails(
+                newsImageUrl: newsImageUrl,
+                newsTitle: newsTitle,
+                newsCategory: newsCategory,
+                newsDescription: newsDescription,
+              ),
+            ),
+          );
+        },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

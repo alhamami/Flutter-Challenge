@@ -21,6 +21,8 @@ class HorizontalNewsCards extends StatelessWidget {
               newsImageUrl: trendingNews[index]['newsImageUrl']!,
               newsTitle: trendingNews[index]['newsTitle']!,
               publishedTime: trendingNews[index]['publishedTime']!,
+              newsCategory: trendingNews[index]['newsCategory']!,
+              newsDescription: trendingNews[index]['newsDescription']!,
             );
           }
         },

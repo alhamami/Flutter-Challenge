@@ -1,15 +1,24 @@
 import 'package:intl/intl.dart';
 
 class HomeModel {
-  HomeModel({this.newsImageUrl, this.newsTitle, this.publishedTime});
+  HomeModel(
+      {this.newsImageUrl,
+      this.newsTitle,
+      this.publishedTime,
+      this.newsCategory,
+      this.newsDescription});
   String? newsImageUrl;
   String? newsTitle;
   String? publishedTime;
+  String? newsDescription;
+  String? newsCategory;
 
   HomeModel.fromJson(Map<String, dynamic> json) {
     newsImageUrl = json['urlToImage'];
     newsTitle = json['title'];
     publishedTime = json['publishedAt'];
+    newsCategory = "Not Found";
+    newsDescription = json['description'];
   }
 
   Map<String, dynamic> toJSON() {
@@ -48,7 +57,7 @@ class HomeModel {
       "newsImageUrl":
           "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dtSFG.img?w=800&h=415&q=60&m=2&f=jpg",
       "newsTitle": "The most iconic cars in cinematic and television history",
-      "newsaCategory": "Cars"
+      "newsCategory": "Cars"
     },
     {
       "newsImageUrl":

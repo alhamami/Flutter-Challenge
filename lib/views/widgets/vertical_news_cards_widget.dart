@@ -16,6 +16,7 @@ class VerticalNewsCards extends StatelessWidget {
           newsImageUrl: latestNews[i]['newsImageUrl']!,
           newsTitle: latestNews[i]['newsTitle']!,
           publishedTime: latestNews[i]['publishedTime']!,
+          newsDescription: latestNews[i]['newsDescription']!,
           newsCategory: "not found",
         ),
       );

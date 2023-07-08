@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../screens/artical_details_view.dart';
+
 class LatestNewsCrad extends StatelessWidget {
   LatestNewsCrad(
       {required this.newsCategory,
       required this.newsTitle,
       required this.publishedTime,
-      required this.newsImageUrl});
+      required this.newsImageUrl,
+      required this.newsDescription});
 
   final String newsCategory;
 
@@ -14,6 +17,7 @@ class LatestNewsCrad extends StatelessWidget {
 
   final String publishedTime;
   final String newsImageUrl;
+  final String newsDescription;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,19 @@ class LatestNewsCrad extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ArticalDetails(
+                newsImageUrl: newsImageUrl,
+                newsTitle: newsTitle,
+                newsCategory: newsCategory,
+                newsDescription: newsDescription,
+              ),
+            ),
+          );
+        },
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [

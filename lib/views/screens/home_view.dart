@@ -1,35 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:stylish_bottom_bar/model/bar_items.dart';
-import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
-import '../../view_models/home_view_model.dart';
 import 'package:news_app/views/widgets/category_widget.dart';
 import '../widgets/bottom_bar_widget.dart';
 import '../widgets/horizontal_news_cards_widget.dart';
-import '../widgets/latest_news_card_widget.dart';
-import '../widgets/trending_news_card_widget.dart';
+
 import '../widgets/vertical_news_cards_widget.dart';
 import '../widgets/subtitle_widget.dart';
 import 'package:news_app/views/constants.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
-
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  HomeViewModel homeViewModel = HomeViewModel();
-
-  Future loadData() async {
-    await homeViewModel.fetchNews();
-  }
-
-  @override
-  void initState() {
-    loadData();
-    super.initState();
-  }
+class HomeView extends StatelessWidget {
+  HomeView(
+      {required this.newsList,
+      required this.title,
+      required this.todayDate,
+      required this.categories,
+      required this.treadingHeadLine,
+      required this.latestHeadLine});
+  final List<Map<String, String>> newsList;
+  final String title;
+  final String todayDate;
+  final List<String> categories;
+  final String treadingHeadLine;
+  final String latestHeadLine;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +35,8 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(homeViewModel.title),
-                  Text(homeViewModel.homeModel.todayDate),
+                  Text(title),
+                  Text(todayDate),
                   SizedBox(
                     height: 40,
                   ),
@@ -57,22 +48,22 @@ class _HomeViewState extends State<HomeView> {
               height: 25,
             ),
             CategoryCards(
-              categories: homeViewModel.homeModel.categories,
+              categories: categories,
               onPressed: () {},
             ),
-            SubTitle(titleName: homeViewModel.homeModel.treadingHeadLine),
+            SubTitle(titleName: treadingHeadLine),
             SizedBox(
               height: 25,
             ),
             HorizontalNewsCards(
-              trendingNews: homeViewModel.newsList,
+              trendingNews: newsList,
             ),
-            SubTitle(titleName: homeViewModel.homeModel.latestHeadLine),
+            SubTitle(titleName: latestHeadLine),
             SizedBox(
               height: 25,
             ),
             VerticalNewsCards(
-              latestNews: homeViewModel.newsList,
+              latestNews: newsList,
             ),
           ],
         ),
