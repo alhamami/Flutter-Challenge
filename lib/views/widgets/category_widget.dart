@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'category_card_widget.dart';
 
 class CategoryCards extends StatelessWidget {
-  CategoryCards({required this.categories});
+  CategoryCards({required this.categories, required this.selectedCategory});
 
   final List<String> categories;
+  final String selectedCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,17 @@ class CategoryCards extends StatelessWidget {
         shrinkWrap: true,
         itemCount: categories.length,
         itemBuilder: (BuildContext context, int i) {
-          return CategoryCard(category: '${categories[i]}');
+          if (categories[i] == selectedCategory) {
+            return CategoryCard(
+              category: '${categories[i]}',
+              isSelected: true,
+            );
+          } else {
+            return CategoryCard(
+              category: '${categories[i]}',
+              isSelected: false,
+            );
+          }
         },
       ),
     );

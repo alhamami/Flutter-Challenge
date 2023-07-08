@@ -7,13 +7,13 @@ class TrendingNewsCrad extends StatelessWidget {
       {required this.newsImageUrl,
       required this.newsTitle,
       required this.publishedTime,
-      required this.newsCategory,
+      required this.newsSource,
       required this.newsDescription});
 
   final String newsImageUrl;
   final String newsTitle;
   final String publishedTime;
-  final String newsCategory;
+  final String newsSource;
   final String newsDescription;
 
   @override
@@ -41,7 +41,7 @@ class TrendingNewsCrad extends StatelessWidget {
               builder: (context) => ArticalDetails(
                 newsImageUrl: newsImageUrl,
                 newsTitle: newsTitle,
-                newsCategory: newsCategory,
+                newsSource: newsSource,
                 newsDescription: newsDescription,
               ),
             ),

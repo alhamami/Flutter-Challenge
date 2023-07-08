@@ -3,15 +3,17 @@ import '../constants.dart';
 
 class ArticalDetails extends StatelessWidget {
   ArticalDetails(
-      {this.newsCategory,
+      {this.newsSource,
       this.newsImageUrl,
       this.newsTitle,
       this.newsDescription});
 
-  final String? newsCategory;
+  final String? newsSource;
   final String? newsImageUrl;
   final String? newsTitle;
   final String? newsDescription;
+
+  List<Map<String, String>> newsList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,22 @@ class ArticalDetails extends StatelessWidget {
           foregroundColor: Colors.black,
           elevation: 0.2,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.more_vert),
-              tooltip: 'Menu',
-              onPressed: () {},
+            PopupMenuButton<String>(
+              icon: Icon(Icons.more_vert),
+              onSelected: (String menuItem) {
+                switch (menuItem) {
+                  case 'add':
+                    newsList.add({});
+                    break;
+                  default:
+                }
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(
+                  value: 'add',
+                  child: Text('Add to My List'),
+                ),
+              ],
             ),
           ],
         ),
@@ -35,7 +49,7 @@ class ArticalDetails extends StatelessWidget {
           child: ListView(
             children: [
               Text(
-                newsCategory!,
+                newsSource!,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
               SizedBox(

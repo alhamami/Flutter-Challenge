@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'latest_news_card_widget.dart';
 
 class VerticalNewsCards extends StatelessWidget {
-  VerticalNewsCards({required this.latestNews});
+  VerticalNewsCards({required this.latestNews, required this.category});
 
   final List<Map<String, String>> latestNews;
+  String category;
 
   List<LatestNewsCrad> getLatestNewsCards() {
     List<LatestNewsCrad> listOflatestNewsCards = [];
@@ -17,7 +18,8 @@ class VerticalNewsCards extends StatelessWidget {
           newsTitle: latestNews[i]['newsTitle']!,
           publishedTime: latestNews[i]['publishedTime']!,
           newsDescription: latestNews[i]['newsDescription']!,
-          newsCategory: "not found",
+          newsCategory: category,
+          newsSource: latestNews[i]['newsSource']!,
         ),
       );
     }

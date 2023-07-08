@@ -9,7 +9,8 @@ class LatestNewsCrad extends StatelessWidget {
       required this.newsTitle,
       required this.publishedTime,
       required this.newsImageUrl,
-      required this.newsDescription});
+      required this.newsDescription,
+      required this.newsSource});
 
   final String newsCategory;
 
@@ -18,11 +19,12 @@ class LatestNewsCrad extends StatelessWidget {
   final String publishedTime;
   final String newsImageUrl;
   final String newsDescription;
+  final String newsSource;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(25, 0, 25, 30),
+      margin: EdgeInsets.only(bottom: 30),
       constraints: BoxConstraints(
         minHeight: 112,
       ),
@@ -46,7 +48,7 @@ class LatestNewsCrad extends StatelessWidget {
               builder: (context) => ArticalDetails(
                 newsImageUrl: newsImageUrl,
                 newsTitle: newsTitle,
-                newsCategory: newsCategory,
+                newsSource: newsSource,
                 newsDescription: newsDescription,
               ),
             ),

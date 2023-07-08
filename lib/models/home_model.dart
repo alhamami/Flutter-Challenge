@@ -6,12 +6,14 @@ class HomeModel {
       this.newsTitle,
       this.publishedTime,
       this.newsCategory,
-      this.newsDescription});
+      this.newsDescription,
+      this.newsSource});
   String? newsImageUrl;
   String? newsTitle;
   String? publishedTime;
   String? newsDescription;
   String? newsCategory;
+  String? newsSource;
 
   HomeModel.fromJson(Map<String, dynamic> json) {
     newsImageUrl = json['urlToImage'];
@@ -19,6 +21,7 @@ class HomeModel {
     publishedTime = json['publishedAt'];
     newsCategory = "Not Found";
     newsDescription = json['description'];
+    newsSource = json['source']['name'];
   }
 
   Map<String, dynamic> toJSON() {

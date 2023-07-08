@@ -1,5 +1,6 @@
 import 'package:news_app/models/home_model.dart';
 import 'package:news_app/repositories/news/news_api.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class HomeViewModel {
   final String title = "Headline.";
@@ -8,34 +9,8 @@ class HomeViewModel {
 
   List<Map<String, String>> newsList = [];
 
-  Future<bool> fetchNews() async {
-    List<HomeModel> newsData = await NewsAPI().getNews();
-
-    if (newsData != null || !newsData.isEmpty) {
-      for (HomeModel item in newsData) {
-        if (item != null &&
-            item.newsImageUrl != null &&
-            item.newsTitle != null &&
-            item.publishedTime != null) {
-          newsList.add({
-            "newsCategory": item.newsCategory!,
-            "newsTitle": item.newsTitle!,
-            "publishedTime": item.publishedTime!.substring(0, 10),
-            "newsImageUrl": item.newsImageUrl!,
-            "newsDescription": item.newsDescription!,
-          });
-        }
-      }
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   Future<bool> fetchNewsByCategory(String? category) async {
     List<HomeModel> newsData = await NewsAPI().getNewsByCategory(category);
-
-    print(newsData);
 
     if (newsData != null || !newsData.isEmpty) {
       for (HomeModel item in newsData) {
@@ -43,13 +18,16 @@ class HomeViewModel {
             item.newsImageUrl != null &&
             item.newsTitle != null &&
             item.publishedTime != null &&
-            item.newsDescription != null) {
+            item.newsDescription != null &&
+            item.newsSource! != null) {
           newsList.add({
             "newsCategory": item.newsCategory!,
             "newsTitle": item.newsTitle!,
-            "publishedTime": item.publishedTime!.substring(0, 10),
+            "publishedTime":
+                timeago.format(DateTime.parse(item.publishedTime!)).toString(),
             "newsImageUrl": item.newsImageUrl!,
             "newsDescription": item.newsDescription!,
+            "newsSource": item.newsSource!,
           });
         }
       }
@@ -58,6 +36,31 @@ class HomeViewModel {
       return false;
     }
   }
+
+//
+// Future<bool> fetchNews() async {
+//   List<HomeModel> newsData = await NewsAPI().getNews();
+//
+//   if (newsData != null || !newsData.isEmpty) {
+//     for (HomeModel item in newsData) {
+//       if (item != null &&
+//           item.newsImageUrl != null &&
+//           item.newsTitle != null &&
+//           item.publishedTime != null) {
+//         newsList.add({
+//           "newsCategory": item.newsCategory!,
+//           "newsTitle": item.newsTitle!,
+//           "publishedTime": item.publishedTime!.substring(0, 10),
+//           "newsImageUrl": item.newsImageUrl!,
+//           "newsDescription": item.newsDescription!,
+//         });
+//       }
+//     }
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
   //
   // List<LatestNewsCrad> getListOfLatestNewsCards() {
