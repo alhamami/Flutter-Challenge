@@ -3,16 +3,18 @@ import 'package:stylish_bottom_bar/model/bar_items.dart';
 import 'package:stylish_bottom_bar/model/options.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
+import '../screens/home_view.dart';
+import '../screens/news_list_view.dart';
+
 class BottomBarStyle extends StatefulWidget {
-  const BottomBarStyle({super.key});
+  const BottomBarStyle({required this.selectedButton});
+  final int selectedButton;
 
   @override
   State<BottomBarStyle> createState() => _BottomBarStyleState();
 }
 
 class _BottomBarStyleState extends State<BottomBarStyle> {
-  var selected = 0;
-
   @override
   Widget build(BuildContext context) {
     Color itemColor = Colors.grey;
@@ -60,11 +62,33 @@ class _BottomBarStyleState extends State<BottomBarStyle> {
       ],
       hasNotch: true,
       fabLocation: StylishBarFabLocation.center,
-      currentIndex: selected,
+      currentIndex: widget.selectedButton,
       onTap: (index) {
         setState(() {
-          selected = index;
-          print(index);
+          if (index != widget.selectedButton) {
+            switch (index) {
+              case 0:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomeView(category: 'All')));
+                break;
+              case 1:
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NewsListView()));
+                break;
+              case 2:
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NewsListView()));
+                break;
+              case 3:
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NewsListView()));
+                break;
+              default:
+            }
+          }
+
           // controller.jumpToPage(index);
         });
       },

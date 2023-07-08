@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/global/global_data.dart';
 import '../constants.dart';
 
-class ArticalDetails extends StatelessWidget {
-  ArticalDetails(
-      {this.newsSource,
-      this.newsImageUrl,
-      this.newsTitle,
-      this.newsDescription});
+class ArticalDetailsView extends StatelessWidget {
+  ArticalDetailsView(
+      {required this.newsSource,
+      required this.newsImageUrl,
+      required this.newsTitle,
+      required this.newsDescription,
+      required this.newsCategory,
+      required this.newsPublishedTime});
 
-  final String? newsSource;
-  final String? newsImageUrl;
-  final String? newsTitle;
-  final String? newsDescription;
-
-  List<Map<String, String>> newsList = [];
+  final String newsSource;
+  final String newsImageUrl;
+  final String newsTitle;
+  final String newsDescription;
+  final String newsCategory;
+  final String newsPublishedTime;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,14 @@ class ArticalDetails extends StatelessWidget {
               onSelected: (String menuItem) {
                 switch (menuItem) {
                   case 'add':
-                    newsList.add({});
+                    GlobalData.addToMyNewsList({
+                      "newsTitle": newsTitle,
+                      "newsImageUrl": newsImageUrl,
+                      "newsDescription": newsDescription,
+                      "newsCategory": newsCategory,
+                      "publishedTime": newsPublishedTime,
+                      "newsSource": newsSource,
+                    });
                     break;
                   default:
                 }

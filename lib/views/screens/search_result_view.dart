@@ -5,16 +5,16 @@ import '../../view_models/search_result_view_model.dart';
 import '../constants.dart';
 import '../widgets/vertical_news_cards_widget.dart';
 
-class SearchResult extends StatefulWidget {
-  SearchResult({required this.searchString});
+class SearchResultView extends StatefulWidget {
+  SearchResultView({required this.searchString});
 
   final String searchString;
 
   @override
-  State<SearchResult> createState() => _SearchResultState();
+  State<SearchResultView> createState() => _SearchResultViewState();
 }
 
-class _SearchResultState extends State<SearchResult> {
+class _SearchResultViewState extends State<SearchResultView> {
   bool isDataLoaded = false;
   SearchResultViewModel searchResultViewModel = SearchResultViewModel();
 
@@ -64,7 +64,7 @@ class _SearchResultState extends State<SearchResult> {
               ),
               SearchBar(
                 controller: searchController,
-                hintText: 'Search on Everything...',
+                hintText: widget.searchString,
                 hintStyle: MaterialStateProperty.all(
                     TextStyle(color: Colors.grey, fontSize: 15)),
                 textStyle: MaterialStateProperty.all(TextStyle(
@@ -83,7 +83,7 @@ class _SearchResultState extends State<SearchResult> {
                   if (searchController.text != '') {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return SearchResult(
+                      return SearchResultView(
                         searchString: searchController.text,
                       );
                     }));
@@ -118,7 +118,8 @@ class _SearchResultState extends State<SearchResult> {
               ),
               VerticalNewsCards(
                   latestNews: searchResultViewModel.newsList,
-                  category: "widget.category"),
+                  category: "widget.category",
+                  startFromNewsNumber: 0),
             ],
           ),
         ),

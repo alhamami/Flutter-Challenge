@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/views/screens/artical_details_view.dart';
-import 'package:news_app/views/screens/loading_view.dart';
 import 'package:news_app/views/screens/search_result_view.dart';
 import 'package:news_app/views/widgets/category_widget.dart';
 import '../../view_models/home_view_model.dart';
@@ -97,7 +95,7 @@ class _HomeViewState extends State<HomeView> {
                           if (searchController.text != '') {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return SearchResult(
+                              return SearchResultView(
                                 searchString: searchController.text,
                               );
                             }));
@@ -137,12 +135,15 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 child: VerticalNewsCards(
                     latestNews: homeViewModel.newsList,
-                    category: widget.category),
+                    category: widget.category,
+                    startFromNewsNumber: 5),
               ),
             ],
           ),
         ),
-        bottomNavigationBar: BottomBarStyle(),
+        bottomNavigationBar: BottomBarStyle(
+          selectedButton: 0,
+        ),
       ),
     );
   }

@@ -45,11 +45,13 @@ class LatestNewsCrad extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ArticalDetails(
+              builder: (context) => ArticalDetailsView(
                 newsImageUrl: newsImageUrl,
                 newsTitle: newsTitle,
                 newsSource: newsSource,
                 newsDescription: newsDescription,
+                newsPublishedTime: publishedTime,
+                newsCategory: newsCategory,
               ),
             ),
           );

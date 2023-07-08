@@ -8,13 +8,15 @@ class TrendingNewsCrad extends StatelessWidget {
       required this.newsTitle,
       required this.publishedTime,
       required this.newsSource,
-      required this.newsDescription});
+      required this.newsDescription,
+      required this.newsCategory});
 
   final String newsImageUrl;
   final String newsTitle;
   final String publishedTime;
   final String newsSource;
   final String newsDescription;
+  final String newsCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +40,13 @@ class TrendingNewsCrad extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ArticalDetails(
+              builder: (context) => ArticalDetailsView(
                 newsImageUrl: newsImageUrl,
                 newsTitle: newsTitle,
                 newsSource: newsSource,
                 newsDescription: newsDescription,
+                newsCategory: newsCategory,
+                newsPublishedTime: publishedTime,
               ),
             ),
           );
