@@ -1,16 +1,24 @@
-# news_app
+# News App
 
-A news app brings you latest news.
+## In this app I'm trying to learn Flutter by building an app based on MVVM concept. The idea of ​​the application aims to provide various news to the user by using the News API as a data provider, and then displaying the news to the user in the form of a user-friendly and attractive UI.
 
-## Getting Started
+### The application contains four basic sections:
+* Home
+* Explore
+* List
+* Profile
 
-This project is a starting point for a Flutter application.
+#### In Home:
+##### The various news are displayed in two main sections, which are the current news, which enables the user to view exclusive news from around the world. As well as the latest news section where the user can view the latest news. In addition to the possibility of displaying news according to categories, such as business news. As well as the possibility of searching for news by typing the phrase in search bar.
 
-A few resources to get you started if this is your first Flutter project:
+#### In Explore:
+##### The user can browse the news according to the source, for example, the user can choose BBC News and read the news it provides.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#### In List:
+##### The user can add any news to his own list and then return to it and read it whenever he wants.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### In Profile:
+##### The user can view and modify his personal information in the app.
+
+---
+
