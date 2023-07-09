@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/views/screens/explore_view.dart';
 import 'package:stylish_bottom_bar/model/bar_items.dart';
 import 'package:stylish_bottom_bar/model/options.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
@@ -75,7 +76,7 @@ class _BottomBarStyleState extends State<BottomBarStyle> {
                 break;
               case 1:
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewsListView()));
+                    MaterialPageRoute(builder: (context) => ExploreView()));
                 break;
               case 2:
                 Navigator.push(context,
