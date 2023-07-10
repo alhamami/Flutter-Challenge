@@ -47,6 +47,7 @@ class TrendingNewsCrad extends StatelessWidget {
                 newsDescription: newsDescription,
                 newsCategory: newsCategory,
                 newsPublishedTime: publishedTime,
+                isMyNewsListItem: false,
               ),
             ),
           );

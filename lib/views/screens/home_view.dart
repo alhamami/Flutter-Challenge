@@ -136,7 +136,8 @@ class _HomeViewState extends State<HomeView> {
                 child: VerticalNewsCards(
                     latestNews: homeViewModel.newsList,
                     category: widget.category,
-                    startFromNewsNumber: 5),
+                    startFromNewsNumber: 5,
+                    isMyNewsList: false),
               ),
             ],
           ),

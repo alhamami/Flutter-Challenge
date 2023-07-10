@@ -9,7 +9,8 @@ class ArticalDetailsView extends StatelessWidget {
       required this.newsTitle,
       required this.newsDescription,
       required this.newsCategory,
-      required this.newsPublishedTime});
+      required this.newsPublishedTime,
+      required this.isMyNewsListItem});
 
   final String newsSource;
   final String newsImageUrl;
@@ -17,9 +18,14 @@ class ArticalDetailsView extends StatelessWidget {
   final String newsDescription;
   final String newsCategory;
   final String newsPublishedTime;
+  final bool isMyNewsListItem;
 
   @override
   Widget build(BuildContext context) {
+    String articalMenuAction = isMyNewsListItem ? 'delete' : 'add';
+    Text articalMenuLabel =
+        isMyNewsListItem ? Text('Delete From My List') : Text('Add to My List');
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: kScaffoldBackgroundColor,
@@ -42,13 +48,23 @@ class ArticalDetailsView extends StatelessWidget {
                       "newsSource": newsSource,
                     });
                     break;
+                  case 'delete':
+                    GlobalData.deleteFromMyNewsList({
+                      "newsTitle": newsTitle,
+                      "newsImageUrl": newsImageUrl,
+                      "newsDescription": newsDescription,
+                      "newsCategory": newsCategory,
+                      "publishedTime": newsPublishedTime,
+                      "newsSource": newsSource,
+                    });
+                    break;
                   default:
                 }
               },
               itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                const PopupMenuItem<String>(
-                  value: 'add',
-                  child: Text('Add to My List'),
+                PopupMenuItem<String>(
+                  value: articalMenuAction,
+                  child: articalMenuLabel,
                 ),
               ],
             ),

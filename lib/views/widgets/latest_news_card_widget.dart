@@ -10,16 +10,16 @@ class LatestNewsCrad extends StatelessWidget {
       required this.publishedTime,
       required this.newsImageUrl,
       required this.newsDescription,
-      required this.newsSource});
+      required this.newsSource,
+      required this.isMyNewsListItem});
 
   final String newsCategory;
-
   final String newsTitle;
-
   final String publishedTime;
   final String newsImageUrl;
   final String newsDescription;
   final String newsSource;
+  final bool isMyNewsListItem;
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +46,13 @@ class LatestNewsCrad extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => ArticalDetailsView(
-                newsImageUrl: newsImageUrl,
-                newsTitle: newsTitle,
-                newsSource: newsSource,
-                newsDescription: newsDescription,
-                newsPublishedTime: publishedTime,
-                newsCategory: newsCategory,
-              ),
+                  newsImageUrl: newsImageUrl,
+                  newsTitle: newsTitle,
+                  newsSource: newsSource,
+                  newsDescription: newsDescription,
+                  newsPublishedTime: publishedTime,
+                  newsCategory: newsCategory,
+                  isMyNewsListItem: isMyNewsListItem),
             ),
           );
         },

@@ -1,3 +1,5 @@
+import 'package:news_app/models/explore_model.dart';
+
 import 'news_repository.dart';
 import 'package:news_app/models/home_model.dart';
 import 'package:dio/dio.dart';
@@ -25,6 +27,31 @@ class NewsAPI extends NewsRepository {
         List<dynamic> articles = responseData['articles'];
         news = articles.map((article) {
           return HomeModel.fromJson(article);
+        }).toList();
+      }
+    } catch (e) {
+      print(e);
+    }
+
+    return news;
+  }
+
+  @override
+  Future<List<ExploreModel>> getSources() async {
+    List<ExploreModel> news = [];
+
+    try {
+      Response response;
+      response = await dio.get(
+        'https://newsapi.org/v2/top-headlines/sources?&apiKey=$api_key',
+      );
+
+      if (response.statusCode == 200) {
+        var responseData = response.data as Map<String, dynamic>;
+
+        List<dynamic> sources = responseData['sources'];
+        news = sources.map((source) {
+          return ExploreModel.fromJson(source);
         }).toList();
       }
     } catch (e) {

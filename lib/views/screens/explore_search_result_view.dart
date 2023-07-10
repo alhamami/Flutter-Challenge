@@ -5,16 +5,16 @@ import '../../view_models/search_result_view_model.dart';
 import '../constants.dart';
 import '../widgets/vertical_news_cards_widget.dart';
 
-class SearchResultView extends StatefulWidget {
-  SearchResultView({required this.searchString});
+class ExploreSearchResultView extends StatefulWidget {
+  ExploreSearchResultView({required this.searchString});
 
   final String searchString;
 
   @override
-  State<SearchResultView> createState() => _SearchResultViewState();
+  State<ExploreSearchResultView> createState() => _SearchResultViewState();
 }
 
-class _SearchResultViewState extends State<SearchResultView> {
+class _SearchResultViewState extends State<ExploreSearchResultView> {
   bool isDataLoaded = false;
   SearchResultViewModel searchResultViewModel = SearchResultViewModel();
 
@@ -83,7 +83,7 @@ class _SearchResultViewState extends State<SearchResultView> {
                   if (searchController.text != '') {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return SearchResultView(
+                      return ExploreSearchResultView(
                         searchString: searchController.text,
                       );
                     }));

@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/views/screens/search_result_view.dart';
+import '../../view_models/news_list_view_model.dart';
 import '../constants.dart';
 import '../widgets/bottom_bar_widget.dart';
 import '../widgets/vertical_news_cards_widget.dart';
@@ -17,7 +20,9 @@ class _NewsListViewState extends State<NewsListView> {
   late Widget content;
   TextEditingController searchController = TextEditingController();
 
-  var newsList = GlobalData.myNewsList;
+  NewsListViewModel newsListViewModel = NewsListViewModel();
+
+  String searchedPhrase = '';
 
   @override
   void initState() {
@@ -31,6 +36,7 @@ class _NewsListViewState extends State<NewsListView> {
         ),
       );
     } else {
+      GlobalData.updateMyNewsListBySearch('');
       content = Padding(
         padding: EdgeInsets.only(left: 25, right: 25),
         child: ListView(
@@ -50,24 +56,19 @@ class _NewsListViewState extends State<NewsListView> {
               padding: MaterialStateProperty.all(EdgeInsets.only(left: 15)),
               backgroundColor: MaterialStateProperty.all(Colors.grey[200]),
               elevation: MaterialStateProperty.all(0),
-              leading: Icon(
-                size: 30,
-                Icons.search,
-                color: Colors.grey,
-              ),
-              onTap: () {
-                if (searchController.text != '') {
-                  newsList = [];
-                  for (Map<String, String> item in newsList) {
-                    if (item['newsTitle']!.contains(searchController.text) ||
-                        item['newsDescription']!
-                            .contains(searchController.text) ||
-                        item['newsSource']!.contains(searchController.text)) {
-                      newsList.add(item);
-                    }
-                  }
-                }
-              },
+              leading: IconButton(
+                  icon: Icon(
+                    size: 30,
+                    Icons.search,
+                    color: Colors.grey,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      print(searchController.text);
+                      GlobalData.updateMyNewsListBySearch(
+                          searchController.text);
+                    });
+                  }),
             ),
             SizedBox(
               height: 30,
@@ -84,7 +85,7 @@ class _NewsListViewState extends State<NewsListView> {
                       fontSize: 20),
                 ),
                 Text(
-                  '${GlobalData.myNewsList.length} articles found',
+                  '${GlobalData.mySearchedNewsList.length} articles found',
                   style: TextStyle(
                     color: Colors.grey[600],
                     fontSize: 13,
@@ -96,9 +97,10 @@ class _NewsListViewState extends State<NewsListView> {
               height: 30,
             ),
             VerticalNewsCards(
-                latestNews: newsList,
+                latestNews: GlobalData.mySearchedNewsList,
                 category: "widget.category",
-                startFromNewsNumber: 0),
+                startFromNewsNumber: 0,
+                isMyNewsList: true),
           ],
         ),
       );
