@@ -4,15 +4,15 @@
 
 ### Screenshots:
 
-<img src="https://github.com/alhamami/test/blob/main/screenshots/home_screen.jpg" width="150"/>
-<img src="https://github.com/alhamami/test/blob/main/screenshots/home_screen_categories.jpg" width="150"/>
-<img src="https://github.com/alhamami/test/blob/main/screenshots/home_screen_latest_news.jpg" width="150"/>
-<img src="https://github.com/alhamami/test/blob/main/screenshots/artical_screen.jpg" width="150"/>
-<img src="https://github.com/alhamami/test/blob/main/screenshots/artical_screen2.jpg" width="150"/>
-<img src="https://github.com/alhamami/test/blob/main/screenshots/add_artical_screen.jpg" width="150"/>
-<img src="https://github.com/alhamami/test/blob/main/screenshots/news_list_screen.jpg" width="150"/>
-<img src="https://github.com/alhamami/test/blob/main/screenshots/search_result_screen.jpg" width="150"/>
-<img src="https://github.com/alhamami/test/blob/main/screenshots/explore_screen.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/home_screen.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/home_screen_categories.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/home_screen_latest_news.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/artical_screen.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/artical_screen2.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/add_artical_screen.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/news_list_screen.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/search_result_screen.jpg" width="150"/>
+<img src="https://github.com/alhamami/Flutter-Challenge/blob/main/screenshots/explore_screen.jpg" width="150"/>
 
 
 ### The application contains four basic sections:
